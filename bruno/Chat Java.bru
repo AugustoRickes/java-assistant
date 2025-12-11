@@ -1,0 +1,46 @@
+meta {
+  name: Chat Java
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{base_URL}}/chat
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "message": "Explique o que é Polimorfismo em Java"
+  }
+}
+
+vars:pre-request {
+  base_URL: http://127.0.0.1:8000
+}
+
+docs {
+  # Requisição Principal de Chat
+
+  Esta requisição envia uma pergunta sobre Java para o assistente de ensino.
+
+  ## Corpo da Requisição (Body)
+
+  O corpo da requisição deve ser um JSON contendo uma única chave:
+  - `message` (string): A pergunta que você deseja fazer sobre Java.
+
+  ## Resposta de Sucesso (200 OK)
+
+  Uma resposta bem-sucedida retornará um objeto JSON estruturado, dividido em duas partes principais: `explicacao` e `verificacao`.
+
+  - **`explicacao`**: Uma lista de objetos, onde cada objeto representa uma seção da explicação didática.
+    - `titulo` (string): O nome da seção (ex: "Visão Geral", "Analogia").
+    - `conteudo` (string): O texto da explicação para aquela seção.
+  
+  - **`verificacao`**: Um objeto contendo prompts para dar continuidade ao aprendizado.
+    - `resumo_prompt` (string): Uma pergunta que incentiva o usuário a resumir o que aprendeu.
+    - `perguntas_acompanhamento` (list[string]): Uma lista de perguntas sugeridas para aprofundar o conhecimento no tópico.
+
+  Essa estrutura permite que qualquer aplicação cliente construa uma interface de usuário rica e interativa.
+}

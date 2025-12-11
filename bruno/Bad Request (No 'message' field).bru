@@ -1,0 +1,28 @@
+meta {
+  name: Bad Request (No 'message' field)
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{base_URL}}/chat
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "msg": "Esta requisição vai falhar"
+  }
+}
+
+vars:pre-request {
+  base_URL: http://127.0.0.1:8000
+}
+
+tests {
+  test("Should return 422 Unprocessable Entity", function() {
+    const status = res.getStatus();
+    expect(status).to.equal(422);
+  });
+}
