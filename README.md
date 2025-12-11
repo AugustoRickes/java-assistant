@@ -31,7 +31,7 @@ Siga os passos abaixo para configurar e executar o projeto em seu ambiente local
 
 ```bash
 # Clone o repositório
-git clone <git@github.com:AugustoRickes/java-assistant.git>
+git clone git@github.com:AugustoRickes/java-assistant.git
 cd java-assistant
 
 # Crie e ative um ambiente virtual
